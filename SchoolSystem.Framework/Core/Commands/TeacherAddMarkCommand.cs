@@ -2,16 +2,19 @@
 
 using SchoolSystem.Framework.Core.Commands.Contracts;
 using SchoolSystem.Framework.Core.Contracts;
+using SchoolSystem.Framework.Core.Factories;
 
 namespace SchoolSystem.Framework.Core.Commands
 {
     public class TeacherAddMarkCommand : ICommand
     {
         private IDatabase database;
+        private ISchoolFactory schoolFactory;
 
-        public TeacherAddMarkCommand(IDatabase database)
+        public TeacherAddMarkCommand(ISchoolFactory schoolFactory, IDatabase database)
         {
             this.database = database;
+            this.schoolFactory = schoolFactory;
         }
 
         public string Execute(IList<string> parameters)
@@ -23,7 +26,9 @@ namespace SchoolSystem.Framework.Core.Commands
             var student = this.database.Students[studentId];
             var teacher = this.database.Teachers[teacherId];
 
-            teacher.AddMark(student, mark);
+            var newMark = schoolFactory.CreateaMark(teacher.Subject, mark);
+
+            teacher.AddMark(student, newMark);
             return $"Teacher {teacher.FirstName} {teacher.LastName} added mark {mark} to student {student.FirstName} {student.LastName} in {teacher.Subject}.";
         }
     }

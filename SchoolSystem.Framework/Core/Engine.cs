@@ -20,7 +20,7 @@ namespace SchoolSystem.Framework.Core
         /* Could also extract Database provider for Teachers and Students collections
            But it will become too complex for the purposes of this exam */
 
-        public Engine(IReader readerProvider, IWriter writerProvider, IParser parserProvider, ISchoolFactory schoolFactory, IDatabase database)
+        public Engine(IReader readerProvider, IWriter writerProvider, IParser parserProvider, IDatabase database)
         {
             if (readerProvider == null)
             {
@@ -41,24 +41,9 @@ namespace SchoolSystem.Framework.Core
             this.writer = writerProvider;
             this.parser = parserProvider;
             this.database = database;
-            SchoolFactory = schoolFactory;
 
             this.parser.Database = database;
         }
-
-        //TODO database
-        public IDictionary<int, ITeacher> Teachers
-        {
-            get { return this.database.Teachers; }
-        }
-
-        public IDictionary<int, IStudent> Students
-        {
-            get { return this.database.Students; }
-        }
-
-        public static ISchoolFactory SchoolFactory { get; private set; }
-
 
         public void Start()
         {

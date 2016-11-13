@@ -19,7 +19,7 @@ namespace SchoolSystem.Framework.Models
 
         public Subject Subject { get; set; }
 
-        public void AddMark(IStudent student, float mark)
+        public void AddMark(IStudent student, IMark mark)
         {
             if (student.Marks.Count >= MaxStudentMarksCount)
             {
@@ -27,7 +27,8 @@ namespace SchoolSystem.Framework.Models
             }
 
             //var newMark = new Mark(this.Subject, mark);
-            var newMark = Engine.SchoolFactory.CreateaMark(this.Subject, mark);
+            //var newMark = Engine.SchoolFactory.CreateaMark(tchis.Subject, mark);
+            var newMark = mark;
 
             student.Marks.Add(newMark);
         }

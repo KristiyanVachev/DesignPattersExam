@@ -15,6 +15,7 @@ namespace SchoolSystem.Framework.Core.Factories
             {
                 case "CreateStudentCommand":
                 case "CreateTeacherCommand":
+                case "TeacherAddMarkCommand":
                     command = Activator.CreateInstance(commandTypeInfo, factory, database) as ICommand;
                     break;
                 default:

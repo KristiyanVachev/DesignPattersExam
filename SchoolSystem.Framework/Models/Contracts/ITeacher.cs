@@ -14,6 +14,7 @@ namespace SchoolSystem.Framework.Models.Contracts
         /// </summary>
         /// <param name="student">The student, who will recieve the mark.</param>
         /// <param name="mark">The mark itself that can be between 2.00 and 6.00</param>
-        void AddMark(IStudent student, float mark);
+        //void AddMark(IStudent student, float mark); 
+        void AddMark(IStudent student, IMark mark);
     }
 }
