@@ -1,7 +1,5 @@
 ﻿using Ninject;
-using SchoolSystem.Framework.Core;
 using SchoolSystem.Framework.Core.Contracts;
-using SchoolSystem.Framework.Core.Providers;
 
 namespace SchoolSystem.Cli
 {
